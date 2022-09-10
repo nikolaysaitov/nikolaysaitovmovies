@@ -24,7 +24,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 // подключаемся к серверу mong
-// mongoose.connect(addressMongoDB);
+mongoose.connect(addressMongoDB);
 // подключаем мидлвары, роуты и всё остальное
 app.use(helmet());
 app.use(bodyParser.json());
@@ -35,25 +35,6 @@ app.use(requestLogger);
 
 
 
-//-----------------------------------------
-//Mongoose Settings
-//-----------------------------------------
-const {User} = require("./models");
-const mongoose = require("mongoose");
-
-console.log("mongoose stuff intialized");
-
-app.use((req, res, next) => {
-  console.log("use for mongoose callback");
-  if (mongoose.connection.readyState) {
-    console.log("if (mongoose.connection.readyState)");
-    next();
-  } else {
-    console.log("else (mongoose.connection.readyState)");
-    require("./mongo")().then(() => next());
-    console.log("else (mongoose.connection.readyState)");
-  }
-});
 
 
 app.get('/crash-test', () => {
