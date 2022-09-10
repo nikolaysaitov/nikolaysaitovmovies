@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 
-// const { PORT = 3000 } = process.env;
+// const { PORT = 3000 } = process.env;git 
 const port = process.env.PORT || 8080;
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
@@ -15,9 +15,16 @@ const routes = require('./routes/index');
 const NotFoundError = require('./errors/not-found-err_404');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+
+
+
+
+
+
+
 const app = express();
 // подключаемся к серверу mong
-mongoose.connect(addressMongoDB);
+// mongoose.connect(addressMongoDB);
 // подключаем мидлвары, роуты и всё остальное
 app.use(helmet());
 app.use(bodyParser.json());
@@ -25,6 +32,29 @@ app.use(cors);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(requestLogger); 
+
+
+
+//-----------------------------------------
+//Mongoose Settings
+//-----------------------------------------
+const {User} = require("./models");
+const mongoose = require("mongoose");
+
+console.log("mongoose stuff intialized");
+
+app.use((req, res, next) => {
+  console.log("use for mongoose callback");
+  if (mongoose.connection.readyState) {
+    console.log("if (mongoose.connection.readyState)");
+    next();
+  } else {
+    console.log("else (mongoose.connection.readyState)");
+    require("./mongo")().then(() => next());
+    console.log("else (mongoose.connection.readyState)");
+  }
+});
+
 
 app.get('/crash-test', () => {
   setTimeout(() => {
