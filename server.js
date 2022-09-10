@@ -2,9 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 
-// const { PORT = 3000 } = process.env;git 
+// const { PORT = 3000 } = process.env;
 const port = process.env.PORT || 8080;
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
