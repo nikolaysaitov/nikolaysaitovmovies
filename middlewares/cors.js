@@ -1,6 +1,8 @@
 const allowedCors = [
   'https://nikolaysaitovmoviesfrontend.herokuapp.com',
   'http://nikolaysaitovmoviesfrontend.herokuapp.com',
+  'https://movies-explorer-frontend-ten.vercel.app',
+  'https://movies-explorer-frontend-ten.vercel.app',
   'localhost:3001',
   'http://localhost:3001',
 ];
