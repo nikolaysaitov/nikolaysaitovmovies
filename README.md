@@ -1,2 +1,2 @@
 
-## [Домен Бэкенда](https://api.kino.nomoredomains.sbs/)
+## [Домен бэкенда](https://api.kino.nomoredomains.sbs/)

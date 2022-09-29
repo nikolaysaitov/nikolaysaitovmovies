@@ -1,11 +1,10 @@
 const allowedCors = [
-  'https://nikolaysaitovmoviesfrontend.herokuapp.com',
-  'http://nikolaysaitovmoviesfrontend.herokuapp.com',
   'https://movies-explorer-frontend-ten.vercel.app',
   'http://movies-explorer-frontend-ten.vercel.app',
   'localhost:3001',
   'http://localhost:3001',
 ];
+
 
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
@@ -24,6 +23,5 @@ module.exports = (req, res, next) => {
     res.header('Access-Control-Allow-Headers', requestHeaders);
     return res.status(200).end();
   }
-
   next();
 };
